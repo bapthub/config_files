@@ -78,6 +78,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
+
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -85,27 +86,12 @@ fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-export DISPLAY=:0
+
 # some more ls aliases
-# alias jdk17='export JAVA_HOME="/home/bapti/jdk-17.0.2+8" && export PATH=$JAVA_HOME/bin:$PATH'
-# jdk17
-
-## Export clean
-export PATH=/bin/jdk-17.0.2+8/bin:$PATH
-export PATH=/bin/apache-maven-3.8.4/bin:$PATH
-export JAVA_HOME="/bin/jdk-17.0.2+8/"
-
-#alias intelij='cd ~/idea-IC-213.6777.52/bin && ./idea.sh && cd -q'
-alias intelij='~/idea-IC-213.6777.52/bin/idea.sh'
-alias exp='explorer.exe'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias cb="code ~/.bashrc && source ~/.bashrc"
-alias epidock="docker pull registry.cri.epita.fr/cri/infrastructure/nixpie/n    ixos-pie:latest && docker run -it --name docker-pie --rm --tmpfs /tmp --user     $(id -u):$(id -g) -w/root -e HOME=/root -v $HOME:/root registry.cri.epita.f    r/cri/infrastructure/nixpie/nixos-pie:latest /bin/bash"
-alias cdi='cd /home/bapti/PourGit/ing1'
-alias cds='cd /home/bapti/PourGit/ing1/SQL'
-alias sb='source ~/.bashrc'
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -130,60 +116,25 @@ if ! shopt -oq posix; then
   fi
 fi
 
+#custom part
+#Fonctions
+#create folder and change directory
 mkcd()
 {
     if [ ! -d "$1" ]
         then
             mkdir -p "$1"
         fi
-
         cd "$1"
 }
 
+#update system
 updat()
 {
     sudo apt update && sudo apt upgrade && clear
 }
 
-epigit ()
-{
-    if [ "${#}" -ne 2 ]; then
-        >&2 echo USAGE : epigit PATH_TO_ADD TAG_TO_ADD
-        return 1
-    elif [ ! -f "${1}" ]; then
-        >&2 echo ERROR : FILE DOES NOT EXIST OR IS EMPTY
-        return 2
-    fi
-    #clang-format -i "${1}"
-    git add "${1}" || (>&2 echo "ERROR : CAN'T ADD THE FILE(S)" && return 3)
-    git commit -m "Add ${1}" || (>&2 echo "ERROR : CAN'T COMMIT THE FILE(S)" && return 3)
-    git tag "${2}" -m "oui" || (>&2 echo "CAN'T ADD THE TAG" && return 3)
-    git push || (>&2 echo "CAN'T PUSH THE FILE(S)" && return 3)
-    git push --tags || (>&2 echo "CAN'T PUSH THE TAG. TRY git tag -d ${2}" && return 3)
-}
-gcce ()
-{
-    exe=$(echo "${1}")
-    gcc -Wextra -Wall -std=c99 -pedantic -o alphabet ${exe}
-}
-
-epic ()
-{
-    exe=$(echo "${1}" | sed 's/.c$//')
-    gcc -Wextra -Wall -std=c99 -pedantic ${1} -o ${exe} #&& ./${exe}
-}
-
-epicf ()
-{
-    exe=$(echo "${1}" | sed 's/.c$//')
-    gcc -Wextra -Wall -std=c99 -pedantic ${1} -o ${exe} -fsanitize=address -g && ./${exe}
-}
-
-. "$HOME/.cargo/env"
-export PGDATA="$HOME/postgres_data"
-export PGHOST="/tmp"
-export PGDATA="$HOME/postgres_data"
-export PGHOST="/tmp"
-export PGDATA="$HOME/postgres_data"
-export PGHOST="/tmp"
-export DISPLAY=10.29.108.250:0
+#Additional aliases
+alias exp='explorer.exe .'
+alias cb="code ~/.bashrc"
+alias sb='source ~/.bashrc'
