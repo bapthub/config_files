@@ -135,6 +135,8 @@ updat()
 }
 
 #Additional aliases
+sudo apt update && sudo apt upgrade && clear
+alias ..='cd ..'
 alias exp='explorer.exe .'
 alias cb="code ~/.bashrc"
 alias sb='source ~/.bashrc'
