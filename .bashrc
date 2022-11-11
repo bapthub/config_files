@@ -135,8 +135,14 @@ updat()
 }
 
 #Additional aliases
-sudo apt update && sudo apt upgrade && clear
+sudo apt update && sudo apt upgrade -y && clear
 alias ..='cd ..'
 alias exp='explorer.exe .'
 alias cb="code ~/.bashrc"
 alias sb='source ~/.bashrc'
+
+#display
+#setting for wsl2
+#replace ip adresse before ':' with windows host real ip.
+#install xserver on windows side
+export DISPLAY=172.23.48.1:0.0 
