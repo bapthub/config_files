@@ -131,18 +131,51 @@ mkcd()
 #update system
 updat()
 {
-    sudo apt update && sudo apt upgrade && clear
+    sudo apt update && sudo apt upgrade -y && clear
+}
+
+condap()
+{
+    local env_name="$1"
+    shift
+    ~/miniconda3/envs/"$env_name"/bin/pip "$@"
 }
 
 #Additional aliases
-sudo apt update && sudo apt upgrade -y && clear
+# alias winhost="cat /etc/hosts | grep winhost"
 alias ..='cd ..'
 alias exp='explorer.exe .'
 alias cb="code ~/.bashrc"
 alias sb='source ~/.bashrc'
+alias python='python3'
+alias condai='conda install -c conda-forge'
+alias condap='function _conda_pip() { ~/miniconda3/envs/"$1"/bin/pip "${@:2}"; }; _conda_pip'
+alias rmui='docker image prune -a'
+alias rmc='docker builder prune'
+alias drmu="docker system prune -a"
+alias gpl="git pull"
+alias gps="git push"
 
 #display
 #setting for wsl2
 #replace ip adresse before ':' with windows host real ip.
 #install xserver on windows side
-export DISPLAY=172.23.48.1:0.0 
+export DISPLAY=192.168.56.1:0.0
+# export WINHOST=$(cat /etc/hosts | grep winhost | awk '{print $1}')
+# export DISPLAY=$WINHOST:0.0
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/baptiste/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/baptiste/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/baptiste/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/baptiste/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
