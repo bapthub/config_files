@@ -1,1 +1,1 @@
-# linux_config
+This repository contains my personnal linux and vscode settings
