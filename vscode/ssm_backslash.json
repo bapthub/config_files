@@ -1,0 +1,11 @@
+[{
+    "command": "ssmacro.replace",
+    "args": {
+        "info": "replace \\ by / in pathfiles",
+        "find": "\\\\(?![n\"\\\\])",
+        "replace": "/",
+        "all": true,
+        "reg": true,
+        "flag": "gm"
+    }
+}]

@@ -1,0 +1,17 @@
+// Placer vos combinaisons de touches dans ce fichier pour remplacer les valeurs par défaut
+[
+    {
+        "key": "ctrl+8",
+        // replace user by your unix username, unfortunately doesn't work with relative paths
+        "command": "ssmacro.macro", "args": {"path": "/home/user/.vscode/ssm_backslash.json"}
+    },
+    {
+        "key": "ctrl+9",
+        // replace user by your unix username, unfortunately doesn't work with relative paths
+        "command": "ssmacro.macro", "args": {"path": "/home/user/.vscode/ssm_newline.json"}
+    },
+    { 
+        "key": "ctrl+alt+f", "command": "-workbench.action.terminal.focusFindWidget",
+        "when": "terminalFocus" 
+    }
+]
