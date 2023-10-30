@@ -11,7 +11,7 @@ touch .vscode/ssm_backslash.json
 touch .vscode/ssm_newline.json
 ```
 
-3. Fill the files with the content with the macros
+3. Fill the files with the content of the macros
 
 4. In Vscode : ctrl + shipt + P
 
